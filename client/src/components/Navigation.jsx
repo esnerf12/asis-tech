@@ -1,8 +1,8 @@
 export function Navigation() {
     return (
         <>
-            <nav className="grid grid-flow-col gap-10 m-5">
-                <div className="grid grid-cols-2 bg-black rounded-3xl px-10 py-3">
+            <nav className="grid grid-flow-col gap-8 m-5">
+                <div className="grid grid-cols-2 bg-blue-400 rounded-3xl px-10 py-3">
                     <div>
                         <img className="w-32 h-14 rounded-3xl" src="https://activfirst.co.uk/wp-content/uploads/logo-example.jpg" alt="logo-example" />
                     </div>
@@ -34,7 +34,7 @@ export function Navigation() {
                     </div>
                     <div className="flex justify-end items-center gap-4">
                         <button className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-slate-200">Filters</button>
-                        <button className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-green-600">
+                        <button className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-blue-400">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                             </svg>
