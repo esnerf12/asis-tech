@@ -4,8 +4,8 @@ import Universitarios  from '../assets/universitarios.png'
 export function Welcome() {
     return (
         <>
-            <section className="grid grid-cols-2 gap-10 p-10 mx-5">
-                <div className="flex flex-col gap-5">
+            <section className="grid grid-cols-2 mx-5">
+                <div className="flex flex-col p-10 gap-5">
                     <div className="flex justify-end">
                         <h1 className="text-9xl font-mono">ASISTECH</h1>
                     </div>
@@ -16,8 +16,8 @@ export function Welcome() {
                         <img className='w-96' src={ AppGoogleStore } alt="app-and-google-store" />
                     </div>
                 </div>
-                <div className="">
-                    <img className="w-screen" src={ Universitarios } alt="img-example" />
+                <div className="pt-28">
+                    <img className="w-screen h-full" src={ Universitarios } alt="img-example" />
                 </div>
             </section>
         </>
