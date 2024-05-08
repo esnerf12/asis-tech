@@ -33,6 +33,7 @@ class Profesor(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
+# Analisis a esta tabla
 class ProfesorHasSeccion(models.Model):
     profesor_id = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     seccion_id = models.ForeignKey(Seccion, on_delete=models.CASCADE)

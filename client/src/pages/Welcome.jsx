@@ -1,7 +1,7 @@
 import AppGoogleStore  from '../assets/app-and-google-store.png'
 import Universitarios  from '../assets/universitarios.png'
 
-export function Home() {
+export function Welcome() {
     return (
         <>
             <section className="grid grid-cols-2 gap-10 p-10 mx-5">

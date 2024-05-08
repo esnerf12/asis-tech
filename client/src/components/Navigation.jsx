@@ -2,7 +2,7 @@ export function Navigation() {
     return (
         <>
             <nav className="grid grid-flow-col gap-8 m-5">
-                <div className="grid grid-cols-2 bg-blue-400 rounded-3xl px-10 py-3">
+                <div className="grid grid-cols-2 bg-blue-400 rounded-3xl shadow-xl px-10 py-3">
                     <div>
                         <img className="w-32 h-14 rounded-3xl" src="https://activfirst.co.uk/wp-content/uploads/logo-example.jpg" alt="logo-example" />
                     </div>
@@ -10,13 +10,13 @@ export function Navigation() {
                         <img className="w-10 rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="icon" />
                     </div>
                 </div>
-                <div className="grid grid-cols-2 bg-slate-100 rounded-3xl px-10 py-3">
+                <div className="grid grid-cols-2 bg-slate-100 rounded-3xl shadow-xl px-10 py-3">
                     <div className="flex justify-center items-center gap-16">
                         <div className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-slate-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-house" viewBox="0 0 16 16">
+                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
                             </svg>
-                            <span className="font-bold">Location</span>
+                            <span className="font-bold">Inicio</span>
                         </div>
                         <div className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-slate-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-building-fill-check" viewBox="0 0 16 16">
