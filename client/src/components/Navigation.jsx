@@ -28,9 +28,9 @@ export function Navigation({ currentUser, setCurrentUser }) {
         <>
             <nav className="grid grid-flow-col gap-8 m-5">
                 <div className="grid grid-cols-2 bg-blue-400 rounded-3xl shadow-xl px-10 py-3">
-                    <div>
+                    <Link to="/">
                         <img className="w-32 h-14 rounded-3xl" src="https://activfirst.co.uk/wp-content/uploads/logo-example.jpg" alt="logo-example" />
-                    </div>
+                    </Link>
                     <div className="flex justify-end items-center">
                         <img className="w-10 rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="icon" />
                     </div>
