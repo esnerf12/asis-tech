@@ -8,6 +8,6 @@ router = routers.DefaultRouter()
 router.register(r'planificacion', views.PlanificacionView, 'planificacion')
 
 urlpatterns = [
-    path('api/v1/', include(router.urls)),
+    path('v1/', include(router.urls)),
     path('docs/', include_docs_urls(title="Asistencia API")),
 ]
