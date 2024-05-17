@@ -27,7 +27,7 @@ export function Login({ setCurrentUser }) {
           }
         ).then(function(res) {
           setCurrentUser(true);
-          navigate('/registro')
+          navigate('/home')
         });
     }
     

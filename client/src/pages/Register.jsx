@@ -37,7 +37,7 @@ export function Register({ setCurrentUser }) {
             }
           ).then(function(res) {
             setCurrentUser(true);
-            navigate('/registro')
+            navigate('/home')
           });
         });
     }
