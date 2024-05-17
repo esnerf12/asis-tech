@@ -58,16 +58,16 @@ export function Navigation({ currentUser, setCurrentUser }) {
                         </div>
                     </div>
                     <div className="flex justify-end items-center gap-4">
-                        <button className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-slate-200">
+                        <Link to="/login" className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-slate-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
                                 <path fillRule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
                             </svg>
                             <span>Ingresar</span>
-                        </button>
-                        <button className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-blue-400">
+                        </Link>
+                        <Link to="/register" className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-blue-400">
                             <span>Registrarse</span>
-                        </button>
+                        </Link>
                         { currentUser && (
                             <form onSubmit={e => submitLogout(e)}>
                                 <button className='flex justify-center items-center gap-2 text-black border-2 border-black bg-white px-4 p-2'>
