@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import AppUser
 from django.utils import timezone
 
 # Create your models here.
@@ -12,7 +12,7 @@ class Persona(models.Model):
 
 class Coordinador(models.Model):
     persona_id = models.ForeignKey(Persona, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(AppUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 class Asignatura(models.Model):
@@ -25,12 +25,12 @@ class Seccion(models.Model):
 class Estudiante(models.Model):
     persona_id = models.ForeignKey(Persona, on_delete=models.CASCADE)
     seccion_id = models.ForeignKey(Seccion, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(AppUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 class Profesor(models.Model):
     persona_id = models.ForeignKey(Persona, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(AppUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 # Analisis a esta tabla
