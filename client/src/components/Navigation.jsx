@@ -1,4 +1,29 @@
-export function Navigation() {
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+axios.defaults.withCredentials = true
+
+const client = axios.create({
+  baseURL: "http://127.0.0.1:8000"
+})
+
+export function Navigation({ currentUser, setCurrentUser }) {
+    
+    const navigate = useNavigate()
+    
+    function submitLogout(e) {
+        e.preventDefault();
+        client.post(
+          "/api/logout",
+          {withCredentials: true}
+        ).then(function(res) {
+          setCurrentUser(false);
+          navigate('/login')
+        });
+    }
+    
     return (
         <>
             <nav className="grid grid-flow-col gap-8 m-5">
@@ -43,6 +68,16 @@ export function Navigation() {
                         <button className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-blue-400">
                             <span>Registrarse</span>
                         </button>
+                        { currentUser && (
+                            <form onSubmit={e => submitLogout(e)}>
+                                <button className='flex justify-center items-center gap-2 text-black border-2 border-black bg-white px-4 p-2'>
+                                    <span>Salir</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                        <path fillRule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        )}
                     </div>
                 </div>
             </nav>
