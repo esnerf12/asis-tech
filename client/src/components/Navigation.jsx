@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
+import Logo from '../assets/asistech-logo.png'
 import axios from 'axios'
 
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -29,21 +30,24 @@ export function Navigation({ currentUser, setCurrentUser }) {
             <nav className="grid grid-flow-col gap-8 m-5">
                 <div className="grid grid-cols-2 bg-blue-400 rounded-3xl shadow-xl px-10 py-3">
                     <Link to="/">
-                        <img className="w-32 h-14 rounded-3xl" src="https://activfirst.co.uk/wp-content/uploads/logo-example.jpg" alt="logo-example" />
+                        <img className="w-48 h-16 rounded-3xl" src={Logo} alt="Asistech logo design by AsistechTeam" />
                     </Link>
-                    <div className="flex justify-end items-center">
-                        <img className="w-10 rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="icon" />
-                    </div>
+                    { currentUser && (
+                        <div className="flex justify-end items-center">
+                            <img className="w-10 rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="icon" />
+                        </div>
+                    )}
                 </div>
-                <div className="grid grid-cols-2 bg-slate-100 rounded-3xl shadow-xl px-10 py-3">
-                    <div className="flex justify-center items-center gap-16">
+                <div className="grid grid-cols-2 bg-slate-100 rounded-3xl shadow-xl px-5 py-3">
+                    <div className="flex justify-center items-center gap-8">
                         { currentUser && (
-                            <div className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-slate-200">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-house" viewBox="0 0 16 16">
-                                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                            <Link to="/home" className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-slate-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-house-fill" viewBox="0 0 16 16">
+                                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                                    <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
                                 </svg>
                                 <span className="font-bold">Inicio</span>
-                            </div>
+                            </Link>
                         )}
                         <div className="flex justify-center items-center gap-1 px-5 py-4 rounded-2xl bg-slate-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-building-fill-check" viewBox="0 0 16 16">

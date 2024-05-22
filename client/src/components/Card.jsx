@@ -1,4 +1,6 @@
-export function Card({ nombre, cantidad }) {
+import { Link } from 'react-router-dom'
+
+export function Card({ nombre, cantidad, link }) {
     return (
         <>
             <div className="flex flex-col w-[370px] bg-white rounded-2xl shadow-xl p-5">
@@ -9,7 +11,9 @@ export function Card({ nombre, cantidad }) {
                     <span className="text-lg">Cantidad: { cantidad }</span> 
                 </div>
                 <div>
-                    <button className="bg-blue-400 w-full rounded-2xl text-white p-2">Ver más</button>
+                    <Link to={link}>
+                        <button className="bg-blue-400 w-full rounded-2xl text-white p-2">Ver más</button>
+                    </Link>
                 </div>
             </div>
         </>

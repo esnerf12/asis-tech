@@ -4,6 +4,10 @@ import { Welcome } from './pages/Welcome'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
+import { PlanificacionIndex } from './pages/Planificacion/PlanificacionIndex'
+import { HorarioIndex } from './pages/Horario/HorarioIndex'
+import { AsignaturaIndex } from './pages/Asignatura/AsignaturaIndex'
+import { SeccionIndex } from './pages/Seccion/SeccionIndex'
 import { useState } from 'react'
 import './App.css'
 
@@ -22,6 +26,10 @@ function App() {
           <Route path='/home' element={<Home></Home>}></Route>
           <Route path='/login' element={<Login setCurrentUser={setCurrentUser}></Login>}></Route>
           <Route path='/register' element={<Register setCurrentUser={setCurrentUser} ></Register>}></Route>
+          <Route path='/planificacion' element={<PlanificacionIndex></PlanificacionIndex>}></Route>
+          <Route path='/horario' element={<HorarioIndex></HorarioIndex>}></Route>
+          <Route path='/asignatura' element={<AsignaturaIndex></AsignaturaIndex>}></Route>
+          <Route path='/seccion' element={<SeccionIndex></SeccionIndex>}></Route>
         </Routes>
       
       </BrowserRouter>
