@@ -7,6 +7,7 @@ import { Register } from './pages/Register'
 import { PlanificacionIndex } from './pages/Planificacion/PlanificacionIndex'
 import { HorarioIndex } from './pages/Horario/HorarioIndex'
 import { AsignaturaIndex } from './pages/Asignatura/AsignaturaIndex'
+import { AsignaturaFormPage } from './pages/Asignatura/AsignaturaFormPage'
 import { SeccionIndex } from './pages/Seccion/SeccionIndex'
 import { useState } from 'react'
 import './App.css'
@@ -29,6 +30,8 @@ function App() {
           <Route path='/planificacion' element={<PlanificacionIndex></PlanificacionIndex>}></Route>
           <Route path='/horario' element={<HorarioIndex></HorarioIndex>}></Route>
           <Route path='/asignatura' element={<AsignaturaIndex></AsignaturaIndex>}></Route>
+          <Route path='/asignatura/create' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
+          <Route path='/asignatura/:id' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
           <Route path='/seccion' element={<SeccionIndex></SeccionIndex>}></Route>
         </Routes>
       
