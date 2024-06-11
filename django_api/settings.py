@@ -91,8 +91,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'asistech',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'PASSWORD': 'T3cnae1*',
+        'HOST': '10.10.0.55',
         'PORT': '5432'
     }
 }

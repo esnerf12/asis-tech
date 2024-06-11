@@ -66,7 +66,7 @@ class Planificacion(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
 class Clase(models.Model):
-    check_clase = models.BooleanField()
+    nombre = models.CharField(max_length=255)
     hora_inicio = models.TimeField()
     hora_final = models.TimeField()
     planificacion_id = models.ForeignKey(Planificacion, on_delete=models.CASCADE)
@@ -74,7 +74,6 @@ class Clase(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
 class Asistencia(models.Model):
-    check_asistencia = models.BooleanField()
     clase_id = models.ForeignKey(Clase, on_delete=models.CASCADE)
     estudiante_id = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
