@@ -12,6 +12,8 @@ import { AsistenciaIndex } from './pages/Asistencia/AsistenciaIndex'
 import { AsistenciaFormPage } from './pages/Asistencia/AsistenciaFormPage'
 import { AulaIndex } from './pages/Aula/AulaIndex'
 import { AulaFormPage } from './pages/Aula/AulaFormPage'
+import { ClaseIndex } from './pages/Clase/ClaseIndex'
+import { ClaseFormPage } from './pages/Clase/ClaseFormPage'
 import { SeccionIndex } from './pages/Seccion/SeccionIndex'
 import { useState } from 'react'
 import './App.css'
@@ -45,6 +47,10 @@ function App() {
           <Route path='/aula' element={<AulaIndex></AulaIndex>}></Route>
           <Route path='/aula/create' element={<AulaFormPage></AulaFormPage>}></Route>
           <Route path='/aula/:id' element={<AulaFormPage></AulaFormPage>}></Route>
+
+          <Route path='/clase' element={<ClaseIndex></ClaseIndex>}></Route>
+          <Route path='/clase/create' element={<ClaseFormPage></ClaseFormPage>}></Route>
+          <Route path='/clase/:id' element={<ClaseFormPage></ClaseFormPage>}></Route>
 
           <Route path='/seccion' element={<SeccionIndex></SeccionIndex>}></Route>
         </Routes>
