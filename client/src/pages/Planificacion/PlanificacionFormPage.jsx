@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
 
-export function HorarioFormPage() {
+export function PlanificacionFormPage() {
     
     const [ secciones, setSecciones ] = useState()
     const [ asignaturas, setAsignaturas ] = useState()
