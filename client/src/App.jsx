@@ -6,6 +6,7 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { PlanificacionIndex } from './pages/Planificacion/PlanificacionIndex'
 import { HorarioIndex } from './pages/Horario/HorarioIndex'
+import { HorarioFormPage } from './pages/Horario/HorarioFormPage'
 import { AsignaturaIndex } from './pages/Asignatura/AsignaturaIndex'
 import { AsignaturaFormPage } from './pages/Asignatura/AsignaturaFormPage'
 import { AsistenciaIndex } from './pages/Asistencia/AsistenciaIndex'
@@ -14,6 +15,7 @@ import { AulaIndex } from './pages/Aula/AulaIndex'
 import { AulaFormPage } from './pages/Aula/AulaFormPage'
 import { ClaseIndex } from './pages/Clase/ClaseIndex'
 import { ClaseFormPage } from './pages/Clase/ClaseFormPage'
+import { EstudianteIndex } from './pages/Estudiante/EstudianteIndex'
 import { SeccionIndex } from './pages/Seccion/SeccionIndex'
 import { useState } from 'react'
 import './App.css'
@@ -34,7 +36,6 @@ function App() {
           <Route path='/login' element={<Login setCurrentUser={setCurrentUser}></Login>}></Route>
           <Route path='/register' element={<Register setCurrentUser={setCurrentUser} ></Register>}></Route>
           <Route path='/planificacion' element={<PlanificacionIndex></PlanificacionIndex>}></Route>
-          <Route path='/horario' element={<HorarioIndex></HorarioIndex>}></Route>
 
           <Route path='/asignatura' element={<AsignaturaIndex></AsignaturaIndex>}></Route>
           <Route path='/asignatura/create' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
@@ -51,6 +52,12 @@ function App() {
           <Route path='/clase' element={<ClaseIndex></ClaseIndex>}></Route>
           <Route path='/clase/create' element={<ClaseFormPage></ClaseFormPage>}></Route>
           <Route path='/clase/:id' element={<ClaseFormPage></ClaseFormPage>}></Route>
+
+          <Route path='/estudiante' element={<EstudianteIndex></EstudianteIndex>}></Route>
+
+          <Route path='/horario' element={<HorarioIndex></HorarioIndex>}></Route>
+          <Route path='/horario/create' element={<HorarioFormPage></HorarioFormPage>}></Route>
+          <Route path='/horario/:id' element={<HorarioFormPage></HorarioFormPage>}></Route>
 
           <Route path='/seccion' element={<SeccionIndex></SeccionIndex>}></Route>
         </Routes>
