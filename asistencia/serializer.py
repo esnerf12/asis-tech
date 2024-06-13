@@ -7,6 +7,10 @@ from .models import Aula
 from .models import Seccion
 from .models import Clase
 from .models import Asistencia
+from .models import Persona
+from .models import Coordinador
+from .models import Profesor
+from .models import ProfersorHasAsignatura
 from .models import Estudiante
 
 class PlanificacionSerializer(serializers.ModelSerializer):
@@ -52,4 +56,24 @@ class AsistenciaSerializer(serializers.ModelSerializer):
 class EstudianteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Estudiante
+        fields = '__all__'
+        
+class CoordinadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Coordinador
+        fields = '__all__'
+        
+class PersonaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Persona
+        fields = '__all__'
+        
+class ProfesorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profesor
+        fields = '__all__'
+
+class ProfesorHasAsignaturaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProfersorHasAsignatura
         fields = '__all__'

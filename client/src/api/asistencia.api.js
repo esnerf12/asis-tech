@@ -32,6 +32,22 @@ const asistenciaApi = axios.create({
     baseURL: 'http://localhost:8000/api/v1/asistencia'
 })
 
+const personaApi = axios.create({
+    baseURL: 'http://localhost:8000/api/v1/persona'
+})
+
+const coordinadorApi = axios.create({
+    baseURL: 'http://localhost:8000/api/v1/coordinador'
+})
+
+const profesorApi = axios.create({
+    baseURL: 'http://localhost:8000/api/v1/profesor'
+})
+
+const profesorHasAsignaturaApi = axios.create({
+    baseURL: 'http://localhost:8000/api/v1/profesor_asignatura'
+})
+
 const estudianteApi = axios.create({
     baseURL: 'http://localhost:8000/api/v1/estudiante'
 })
@@ -92,9 +108,17 @@ export const deleteAsistencia = (id) => asistenciaApi.delete(`${id}`)
 export const updateAsistencia = (id, asistencia) => asistenciaApi.put(`/${id}/`, asistencia)
 export const getAsistencia = (id) => asistenciaApi.get(`/${id}`)
 
+/* Persona endpoints */
+export const getAllPersonas = () => personaApi.get('/')
+
+/* Coordinador endpoints */
+export const getAllCoordinadores = () => coordinadorApi.get('/')
+
+/* Profesor endpoints */
+export const getAllProfesores = () => profesorApi.get('/')
+
+/* Profesor has asignatura endpoints */
+export const getAllProfesoresHasAsignaturas = () => profesorHasAsignaturaApi.get('/')
+
 /* Estudiante endpoints */
 export const getAllEstudiantes = () => estudianteApi.get('/')
-export const createEstudiante = (estudiante) => estudianteApi.post('/', estudiante)
-export const deleteEstudiante = (id) => estudianteApi.delete(`${id}`)
-export const updateEstudiante = (id, estudiante) => estudianteApi.put(`/${id}/`, estudiante)
-export const getEstudiante = (id) => estudianteApi.get(`/${id}`)

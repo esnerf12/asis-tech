@@ -14,6 +14,10 @@ router.register(r'aula', asisviews.AulaView, 'aula')
 router.register(r'seccion', asisviews.SeccionView, 'seccion')
 router.register(r'clase', asisviews.ClaseView, 'clase')
 router.register(r'asistencia', asisviews.AsistenciaView, 'asistencia')
+router.register(r'persona', asisviews.PersonaView, 'persona')
+router.register(r'coordinador', asisviews.CoordinadorView, 'coordinador')
+router.register(r'profesor', asisviews.ProfesorView, 'profesor')
+router.register(r'profesor_asignatura', asisviews.ProfesorHasAsignaturaView, 'profesor_asignatura')
 router.register(r'estudiante', asisviews.EstudianteView, 'estudiante')
 
 urlpatterns = [

@@ -5,6 +5,7 @@ import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { PlanificacionIndex } from './pages/Planificacion/PlanificacionIndex'
+import { PlanificacionFormPage } from './pages/Planificacion/PlanificacionFormPage'
 import { HorarioIndex } from './pages/Horario/HorarioIndex'
 import { HorarioFormPage } from './pages/Horario/HorarioFormPage'
 import { AsignaturaIndex } from './pages/Asignatura/AsignaturaIndex'
@@ -35,7 +36,6 @@ function App() {
           <Route path='/home' element={<Home></Home>}></Route>
           <Route path='/login' element={<Login setCurrentUser={setCurrentUser}></Login>}></Route>
           <Route path='/register' element={<Register setCurrentUser={setCurrentUser} ></Register>}></Route>
-          <Route path='/planificacion' element={<PlanificacionIndex></PlanificacionIndex>}></Route>
 
           <Route path='/asignatura' element={<AsignaturaIndex></AsignaturaIndex>}></Route>
           <Route path='/asignatura/create' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
@@ -58,6 +58,10 @@ function App() {
           <Route path='/horario' element={<HorarioIndex></HorarioIndex>}></Route>
           <Route path='/horario/create' element={<HorarioFormPage></HorarioFormPage>}></Route>
           <Route path='/horario/:id' element={<HorarioFormPage></HorarioFormPage>}></Route>
+
+          <Route path='/planificacion' element={<PlanificacionIndex></PlanificacionIndex>}></Route>
+          <Route path='/planificacion/create' element={<PlanificacionFormPage></PlanificacionFormPage>}></Route>
+          <Route path='/planificacion/:id' element={<PlanificacionFormPage></PlanificacionFormPage>}></Route>
 
           <Route path='/seccion' element={<SeccionIndex></SeccionIndex>}></Route>
         </Routes>
