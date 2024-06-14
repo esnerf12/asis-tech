@@ -18,6 +18,9 @@ import { ClaseIndex } from './pages/Clase/ClaseIndex'
 import { ClaseFormPage } from './pages/Clase/ClaseFormPage'
 import { EstudianteIndex } from './pages/Estudiante/EstudianteIndex'
 import { SeccionIndex } from './pages/Seccion/SeccionIndex'
+import { SeccionFormPage } from './pages/Seccion/SeccionFormPage'
+import { TipoHorarioIndex } from './pages/TipoHorario/TipoHorarioIndex'
+import { TipoHorarioFormPage } from './pages/TipoHorario/TipoHorarioFormPage'
 import { useState } from 'react'
 import './App.css'
 
@@ -64,6 +67,12 @@ function App() {
           <Route path='/planificacion/:id' element={<PlanificacionFormPage></PlanificacionFormPage>}></Route>
 
           <Route path='/seccion' element={<SeccionIndex></SeccionIndex>}></Route>
+          <Route path='/seccion/create' element={<SeccionFormPage></SeccionFormPage>}></Route>
+          <Route path='/seccion/:id' element={<SeccionFormPage></SeccionFormPage>}></Route>
+
+          <Route path='/tipo_horario' element={<TipoHorarioIndex></TipoHorarioIndex>}></Route>
+          <Route path='/tipo_horario/create' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
+          <Route path='/tipo_horario/:id' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
         </Routes>
       
       </BrowserRouter>
