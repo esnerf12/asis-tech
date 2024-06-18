@@ -27,7 +27,7 @@ export function Navigation({ currentUser, setCurrentUser }) {
     
     return (
         <>
-            <nav className="grid grid-flow-col gap-8 m-5">
+            <nav className="grid grid-flow-col font-mono gap-8 m-5">
                 <div className="grid grid-cols-2 bg-blue-400 rounded-3xl shadow-xl px-10 py-3">
                     <Link to="/">
                         <img className="w-48 h-16 rounded-3xl" src={Logo} alt="Asistech logo design by AsistechTeam" />

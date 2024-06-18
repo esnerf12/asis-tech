@@ -10,7 +10,7 @@ export function Welcome() {
                         <h1 className="text-9xl font-mono">ASISTECH</h1>
                     </div>
                     <div className="">
-                        <p className="text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate officiis iure voluptates alias dolorum aperiam ab aspernatur est. Explicabo facere voluptatibus suscipit nisi cum vel magnam dignissimos repellat corrupti. Sit!</p>
+                        <p className="text-xl font-mono text-slate-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate officiis iure voluptates alias dolorum aperiam ab aspernatur est. Explicabo facere voluptatibus suscipit nisi cum vel magnam dignissimos repellat corrupti. Sit!</p>
                     </div>
                     <div className="flex">
                         <img className='w-96' src={ AppGoogleStore } alt="app-and-google-store" />
