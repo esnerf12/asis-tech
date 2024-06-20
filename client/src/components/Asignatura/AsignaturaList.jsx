@@ -2,12 +2,11 @@ import { useEffect, useState } from "react"
 import { getAllAsignaturas } from "../../api/asistencia.api"
 import { AsignaturaCard } from "./AsignaturaCard"
 
-export function AsignaturaList() {
+export function AsignaturaList({ searchTxt }) {
     
     const [ asignatura, setAsignatura ] = useState()
 
     useEffect(() => {
-        
         async function loadAsignaturas() {
             const res = await getAllAsignaturas()
             setAsignatura(res.data)
