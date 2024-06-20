@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navigation } from './components/Navigation'
 import { Welcome } from './pages/Welcome'
 import { Home } from './pages/Home'
@@ -36,43 +36,52 @@ function App() {
       
         <Routes>
           <Route path='/' element={<Welcome></Welcome>}></Route>
-          <Route path='/home' element={<Home></Home>}></Route>
           <Route path='/login' element={<Login setCurrentUser={setCurrentUser}></Login>}></Route>
           <Route path='/register' element={<Register setCurrentUser={setCurrentUser} ></Register>}></Route>
 
-          <Route path='/asignatura' element={<AsignaturaIndex></AsignaturaIndex>}></Route>
-          <Route path='/asignatura/create' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
-          <Route path='/asignatura/:id' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
+          {
+            currentUser ? (
+              <>
+                <Route path='/home' element={<Home></Home>}></Route>
 
-          <Route path='/asistencia' element={<AsistenciaIndex></AsistenciaIndex>}></Route>
-          <Route path='/asistencia/create' element={<AsistenciaFormPage></AsistenciaFormPage>}></Route>
-          <Route path='/asistencia/:id' element={<AsistenciaFormPage></AsistenciaFormPage>}></Route>
-
-          <Route path='/aula' element={<AulaIndex></AulaIndex>}></Route>
-          <Route path='/aula/create' element={<AulaFormPage></AulaFormPage>}></Route>
-          <Route path='/aula/:id' element={<AulaFormPage></AulaFormPage>}></Route>
-
-          <Route path='/clase' element={<ClaseIndex></ClaseIndex>}></Route>
-          <Route path='/clase/create' element={<ClaseFormPage></ClaseFormPage>}></Route>
-          <Route path='/clase/:id' element={<ClaseFormPage></ClaseFormPage>}></Route>
-
-          <Route path='/estudiante' element={<EstudianteIndex></EstudianteIndex>}></Route>
-
-          <Route path='/horario' element={<HorarioIndex></HorarioIndex>}></Route>
-          <Route path='/horario/create' element={<HorarioFormPage></HorarioFormPage>}></Route>
-          <Route path='/horario/:id' element={<HorarioFormPage></HorarioFormPage>}></Route>
-
-          <Route path='/planificacion' element={<PlanificacionIndex></PlanificacionIndex>}></Route>
-          <Route path='/planificacion/create' element={<PlanificacionFormPage></PlanificacionFormPage>}></Route>
-          <Route path='/planificacion/:id' element={<PlanificacionFormPage></PlanificacionFormPage>}></Route>
-
-          <Route path='/seccion' element={<SeccionIndex></SeccionIndex>}></Route>
-          <Route path='/seccion/create' element={<SeccionFormPage></SeccionFormPage>}></Route>
-          <Route path='/seccion/:id' element={<SeccionFormPage></SeccionFormPage>}></Route>
-
-          <Route path='/tipo_horario' element={<TipoHorarioIndex></TipoHorarioIndex>}></Route>
-          <Route path='/tipo_horario/create' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
-          <Route path='/tipo_horario/:id' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
+                <Route path='/asignatura' element={<AsignaturaIndex></AsignaturaIndex>}></Route>
+                <Route path='/asignatura/create' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
+                <Route path='/asignatura/:id' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
+      
+                <Route path='/asistencia' element={<AsistenciaIndex></AsistenciaIndex>}></Route>
+                <Route path='/asistencia/create' element={<AsistenciaFormPage></AsistenciaFormPage>}></Route>
+                <Route path='/asistencia/:id' element={<AsistenciaFormPage></AsistenciaFormPage>}></Route>
+      
+                <Route path='/aula' element={<AulaIndex></AulaIndex>}></Route>
+                <Route path='/aula/create' element={<AulaFormPage></AulaFormPage>}></Route>
+                <Route path='/aula/:id' element={<AulaFormPage></AulaFormPage>}></Route>
+      
+                <Route path='/clase' element={<ClaseIndex></ClaseIndex>}></Route>
+                <Route path='/clase/create' element={<ClaseFormPage></ClaseFormPage>}></Route>
+                <Route path='/clase/:id' element={<ClaseFormPage></ClaseFormPage>}></Route>
+      
+                <Route path='/estudiante' element={<EstudianteIndex></EstudianteIndex>}></Route>
+      
+                <Route path='/horario' element={<HorarioIndex></HorarioIndex>}></Route>
+                <Route path='/horario/create' element={<HorarioFormPage></HorarioFormPage>}></Route>
+                <Route path='/horario/:id' element={<HorarioFormPage></HorarioFormPage>}></Route>
+      
+                <Route path='/planificacion' element={<PlanificacionIndex></PlanificacionIndex>}></Route>
+                <Route path='/planificacion/create' element={<PlanificacionFormPage></PlanificacionFormPage>}></Route>
+                <Route path='/planificacion/:id' element={<PlanificacionFormPage></PlanificacionFormPage>}></Route>
+      
+                <Route path='/seccion' element={<SeccionIndex></SeccionIndex>}></Route>
+                <Route path='/seccion/create' element={<SeccionFormPage></SeccionFormPage>}></Route>
+                <Route path='/seccion/:id' element={<SeccionFormPage></SeccionFormPage>}></Route>
+      
+                <Route path='/tipo_horario' element={<TipoHorarioIndex></TipoHorarioIndex>}></Route>
+                <Route path='/tipo_horario/create' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
+                <Route path='/tipo_horario/:id' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
+              </>
+            ) : (
+                <Route path='/*' element={<h1>Oopsss. No tienes acceso.</h1>}></Route>
+            )
+          }
         </Routes>
       
       </BrowserRouter>
