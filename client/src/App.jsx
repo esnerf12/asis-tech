@@ -21,6 +21,9 @@ import { SeccionIndex } from './pages/Seccion/SeccionIndex'
 import { SeccionFormPage } from './pages/Seccion/SeccionFormPage'
 import { TipoHorarioIndex } from './pages/TipoHorario/TipoHorarioIndex'
 import { TipoHorarioFormPage } from './pages/TipoHorario/TipoHorarioFormPage'
+import { Unexca } from './pages/Unexca'
+import { Acercade } from './pages/Acercade'
+import { SinAcceso } from './pages/SinAcceso'
 import { useState } from 'react'
 import './App.css'
 
@@ -36,6 +39,8 @@ function App() {
       
         <Routes>
           <Route path='/' element={<Welcome></Welcome>}></Route>
+          <Route path='/unexca' element={<Unexca></Unexca>}></Route>
+          <Route path='/acercade' element={<Acercade></Acercade>}></Route>
           <Route path='/login' element={<Login setCurrentUser={setCurrentUser}></Login>}></Route>
           <Route path='/register' element={<Register setCurrentUser={setCurrentUser} ></Register>}></Route>
 
@@ -79,7 +84,7 @@ function App() {
                 <Route path='/tipo_horario/:id' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
               </>
             ) : (
-                <Route path='/*' element={<h1>Oopsss. No tienes acceso.</h1>}></Route>
+                <Route path='/*' element={<SinAcceso></SinAcceso>}></Route>
             )
           }
         </Routes>
