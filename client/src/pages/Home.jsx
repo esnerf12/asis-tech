@@ -11,6 +11,7 @@ export function Home(){
                 <Card nombre={'Asistencias'} cantidad={10} link={'/asistencia'}></Card>
                 <Card nombre={'Aulas'} cantidad={10} link={'/aula'}></Card>
                 <Card nombre={'Clases'} cantidad={10} link={'/clase'}></Card>
+                <Card nombre={'Tipo de semanas'} cantidad={10} link={'/tipo_semana'}></Card>
             </section>
         </>
     )

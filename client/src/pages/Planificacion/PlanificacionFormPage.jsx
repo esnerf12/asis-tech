@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { createPlanificacion, deletePlanificacion, updatePlanificacion, getPlanificacion, getAllSecciones, getAllAsignaturas, getAllAulas, getAllHorarios, getAllProfesores, getAllTipoSemanas } from "../../api/asistencia.api"
+import { createPlanificacion, deletePlanificacion, updatePlanificacion, getPlanificacion, getAllSecciones, getAllAsignaturas, getAllAulas, getAllHorarios, getAllProfesores, getAllTipoSemanas, getAllTipoHorarios } from "../../api/asistencia.api"
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
@@ -12,6 +12,7 @@ export function PlanificacionFormPage() {
     const [ horarios, setHorarios ] = useState()
     const [ profesores, setProfesores ] = useState()
     const [ tipoSemanas, setTipoSemanas ] = useState()
+    const [ tipoHorario, setTipoHorario ] = useState()
     
     const { register, handleSubmit, formState: { errors }, setValue } = useForm()
 
@@ -89,6 +90,14 @@ export function PlanificacionFormPage() {
         }
         loadTipoSemanas()
     }, [])
+
+    useEffect(() => {
+        async function loadTipoHorario() {
+            const res = await getAllTipoHorarios()
+            setTipoHorario(res.data)
+        }
+        loadTipoHorario()
+    }, [])
     
     return (
         <>
@@ -160,7 +169,7 @@ export function PlanificacionFormPage() {
                     <select className="border-2 border-black rounded-md p-2" name="horario_id" id="horario_id" {...register('horario_id', {required: true})}>
                         {
                             horarios && horarios.map(hor => (
-                                <option key={hor.id} value={hor.id}>{hor.tipo_id}</option>
+                                <option key={hor.id} value={hor.id}>{tipoHorario && tipoHorario.find(e => { return e.id === hor.tipo_id }).tipo} : {hor.hora_desde} - {hor.hora_hasta}</option>
                             ))
                         }
                     </select>

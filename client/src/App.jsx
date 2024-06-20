@@ -21,6 +21,8 @@ import { SeccionIndex } from './pages/Seccion/SeccionIndex'
 import { SeccionFormPage } from './pages/Seccion/SeccionFormPage'
 import { TipoHorarioIndex } from './pages/TipoHorario/TipoHorarioIndex'
 import { TipoHorarioFormPage } from './pages/TipoHorario/TipoHorarioFormPage'
+import { TipoSemanaIndex } from './pages/TipoSemana/TipoSemanaIndex'
+import { TipoSemanaFormPage } from './pages/TipoSemana/TipoSemanaFormPage'
 import { Unexca } from './pages/Unexca'
 import { Acercade } from './pages/Acercade'
 import { SinAcceso } from './pages/SinAcceso'
@@ -82,6 +84,10 @@ function App() {
                 <Route path='/tipo_horario' element={<TipoHorarioIndex></TipoHorarioIndex>}></Route>
                 <Route path='/tipo_horario/create' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
                 <Route path='/tipo_horario/:id' element={<TipoHorarioFormPage></TipoHorarioFormPage>}></Route>
+
+                <Route path='/tipo_semana' element={<TipoSemanaIndex></TipoSemanaIndex>}></Route>
+                <Route path='/tipo_semana/create' element={<TipoSemanaFormPage></TipoSemanaFormPage>}></Route>
+                <Route path='/tipo_semana/:id' element={<TipoSemanaFormPage></TipoSemanaFormPage>}></Route>
               </>
             ) : (
                 <Route path='/*' element={<SinAcceso></SinAcceso>}></Route>

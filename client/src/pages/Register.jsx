@@ -86,7 +86,7 @@ export function Register({ setCurrentUser }) {
                   </div>
                 </div>
                 <div className="flex justify-center pt-2">
-                  <button className="w-full text-center bg-blue-400 my-2 p-4 hover:bg-slate-400 transition ease-in-out delay-150 hover:scale-105 hover:-translate-y-1 duration-300">Ingresar</button>
+                  <button className="w-full text-center bg-blue-400 my-2 p-4 hover:bg-slate-400 transition ease-in-out delay-150 hover:scale-105 hover:-translate-y-1 duration-300">Registrar</button>
                 </div>
                 <div className="text-center">
                   <span className="select-none">¿Ya tienes usuario? <Link className="border-b-2 border-blue-400 hover:border-slate-400 hover:text-slate-400" to="/login">Ingresa</Link></span>
