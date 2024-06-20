@@ -52,6 +52,10 @@ const estudianteApi = axios.create({
     baseURL: 'http://localhost:8000/api/v1/estudiante'
 })
 
+const tipoSemanaApi = axios.create({
+    baseURL: 'http://localhost:8000/api/v1/tipo_semana'
+})
+
 /* Planificacion endpoints */
 export const getAllPlanificaciones = () => planificacionApi.get('/')
 export const createPlanificacion = (planificacion) => planificacionApi.post('/', planificacion)
@@ -79,6 +83,13 @@ export const createTipoHorario = (tipo_horario) => tipoHorarioApi.post('/', tipo
 export const deleteTipoHorario = (id) => tipoHorarioApi.delete(`${id}`)
 export const updateTipoHorario = (id, tipo_horario) => tipoHorarioApi.put(`/${id}/`, tipo_horario)
 export const getTipoHorario = (id) => tipoHorarioApi.get(`/${id}`)
+
+/* Tipo Semana endpoints */
+export const getAllTipoSemanas = () => tipoSemanaApi.get('/')
+export const createTipoSemana = (tipo_semana) => tipoSemanaApi.post('/', tipo_semana)
+export const deleteTipoSemana = (id) => tipoSemanaApi.delete(`${id}`)
+export const updateTipoSemana = (id, tipo_semana) => tipoSemanaApi.put(`/${id}/`, tipo_semana)
+export const getTipoSemana = (id) => tipoSemanaApi.get(`/${id}`)
 
 /* Aula endpoints */
 export const getAllAulas = () => aulaApi.get('/')

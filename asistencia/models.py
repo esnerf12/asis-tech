@@ -5,7 +5,8 @@ from django.utils import timezone
 # Create your models here.
 class Persona(models.Model):
     cedula = models.IntegerField()
-    nombre_apellido = models.CharField(max_length=255)
+    nombres = models.CharField(max_length=255)
+    apellidos = models.CharField(max_length=255)
     fecha_nacimiento = models.DateTimeField()
     telefono = models.IntegerField()
     created_at = models.DateTimeField(default=timezone.now)
@@ -56,13 +57,17 @@ class Horario(models.Model):
     hora_hasta = models.TimeField()
     created_at = models.DateTimeField(default=timezone.now)
 
+class TipoSemana(models.Model):
+    tipo = models.CharField(max_length=255)
+    created_at = models.DateTimeField(default=timezone.now)
+
 class Planificacion(models.Model):
     seccion_id = models.ForeignKey(Seccion, on_delete=models.CASCADE)
     asignatura_id = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
     aula_id = models.ForeignKey(Aula, on_delete=models.CASCADE)
     horario_id = models.ForeignKey(Horario, on_delete=models.CASCADE)
     profesor_id = models.ForeignKey(Profesor, on_delete=models.CASCADE)
-    tipo_semana = models.CharField(max_length=255)
+    tipo_semana_id = models.ForeignKey(TipoSemana, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
 class Clase(models.Model):

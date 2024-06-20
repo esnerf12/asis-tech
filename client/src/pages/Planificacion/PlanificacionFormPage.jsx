@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { createPlanificacion, deletePlanificacion, updatePlanificacion, getPlanificacion, getAllSecciones, getAllAsignaturas, getAllAulas, getAllHorarios, getAllProfesores } from "../../api/asistencia.api"
+import { createPlanificacion, deletePlanificacion, updatePlanificacion, getPlanificacion, getAllSecciones, getAllAsignaturas, getAllAulas, getAllHorarios, getAllProfesores, getAllTipoSemanas } from "../../api/asistencia.api"
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
@@ -11,6 +11,7 @@ export function PlanificacionFormPage() {
     const [ aulas, setAulas ] = useState()
     const [ horarios, setHorarios ] = useState()
     const [ profesores, setProfesores ] = useState()
+    const [ tipoSemanas, setTipoSemanas ] = useState()
     
     const { register, handleSubmit, formState: { errors }, setValue } = useForm()
 
@@ -35,7 +36,7 @@ export function PlanificacionFormPage() {
                 setValue('aula_id', res.data.aula_id)
                 setValue('horario_id', res.data.horario_id)
                 setValue('profesor_id', res.data.profesor_id)
-                setValue('tipo_semana', res.data.tipo_semana)
+                setValue('tipo_semana_id', res.data.tipo_semana_id)
             }
         }
         loadPlanificacion()
@@ -79,6 +80,14 @@ export function PlanificacionFormPage() {
             setProfesores(res.data)
         }
         loadProfesores()
+    }, [])
+
+    useEffect(() => {
+        async function loadTipoSemanas() {
+            const res = await getAllTipoSemanas()
+            setTipoSemanas(res.data)
+        }
+        loadTipoSemanas()
     }, [])
     
     return (
@@ -172,15 +181,21 @@ export function PlanificacionFormPage() {
                         }
                     </select>
 
-                    <label className="flex justify-start items-center gap-2" htmlFor="tipo_semana">
+                    <label className="flex justify-start items-center gap-2" htmlFor="tipo_semana_id">
                         <span className="text-lg">Tipo de semana</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-info-circle text-blue-900 cursor-pointer" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
                         </svg>
-                        { errors.tipo_semana && <li className="text-red-600">El tipo de semana es requerido.</li> }
+                        { errors.tipo_semana_id && <li className="text-red-600">El tipo de semana es requerido.</li> }
                     </label>
-                    <input className="border-2 border-black rounded-md p-2" type="text" {...register('tipo_semana', {required: true})} />
+                    <select className="border-2 border-black rounded-md p-2" name="tipo_semana_id" id="tipo_semana_id" {...register('tipo_semana_id', {required: true})}>
+                        {
+                            tipoSemanas && tipoSemanas.map(tse => (
+                                <option key={tse.id} value={tse.id}>{tse.tipo}</option>
+                            ))
+                        }
+                    </select>
 
                     <button type="submit" className="border-2 border-blue-900 bg-white text-blue-900 px-4 py-2 rounded-lg mt-6">Registrar</button>
 

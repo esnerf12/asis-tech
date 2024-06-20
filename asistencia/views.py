@@ -4,6 +4,7 @@ from .serializer import PlanificacionSerializer
 from .serializer import AsignaturaSerializer
 from .serializer import HorarioSerializer
 from .serializer import TipoHorarioSerializer
+from .serializer import TipoSemanaSerializer
 from .serializer import AulaSerializer
 from .serializer import SeccionSerializer
 from .serializer import ClaseSerializer
@@ -17,6 +18,7 @@ from .models import Planificacion
 from .models import Asignatura
 from .models import Horario
 from .models import TipoHorario
+from .models import TipoSemana
 from .models import Aula
 from .models import Seccion
 from .models import Clase
@@ -43,6 +45,10 @@ class HorarioView(viewsets.ModelViewSet):
 class TipoHorarioView(viewsets.ModelViewSet):
     serializer_class = TipoHorarioSerializer
     queryset = TipoHorario.objects.all()
+
+class TipoSemanaView(viewsets.ModelViewSet):
+    serializer_class = TipoSemanaSerializer
+    queryset = TipoSemana.objects.all()
 
 class AulaView(viewsets.ModelViewSet):
     serializer_class = AulaSerializer

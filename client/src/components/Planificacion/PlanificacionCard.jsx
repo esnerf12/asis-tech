@@ -24,7 +24,7 @@ export function PlanificacionCard({ pla }) {
                         { pla.profesor_id }
                     </th>
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        { pla.tipo_semana }
+                        { pla.tipo_semana_id }
                     </th>
                     <td className="flex gap-2 px-6 py-4">
                         <a onClick={ () => { navigate('/planificacion/' + pla.id) } } className="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">

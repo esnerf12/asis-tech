@@ -12,6 +12,7 @@ from .models import Coordinador
 from .models import Profesor
 from .models import ProfersorHasAsignatura
 from .models import Estudiante
+from .models import TipoSemana
 
 class PlanificacionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,6 +32,11 @@ class HorarioSerializer(serializers.ModelSerializer):
 class TipoHorarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoHorario
+        fields = '__all__'
+
+class TipoSemanaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TipoSemana
         fields = '__all__'
 
 class AulaSerializer(serializers.ModelSerializer):
