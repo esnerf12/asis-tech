@@ -23,6 +23,7 @@ import { TipoHorarioIndex } from './pages/TipoHorario/TipoHorarioIndex'
 import { TipoHorarioFormPage } from './pages/TipoHorario/TipoHorarioFormPage'
 import { TipoSemanaIndex } from './pages/TipoSemana/TipoSemanaIndex'
 import { TipoSemanaFormPage } from './pages/TipoSemana/TipoSemanaFormPage'
+import { Profile } from './pages/Profile'
 import { Unexca } from './pages/Unexca'
 import { Acercade } from './pages/Acercade'
 import { SinAcceso } from './pages/SinAcceso'
@@ -46,10 +47,11 @@ function App() {
           <Route path='/login' element={<Login setCurrentUser={setCurrentUser}></Login>}></Route>
           <Route path='/register' element={<Register setCurrentUser={setCurrentUser} ></Register>}></Route>
 
-          {
+{/*           {
             currentUser ? (
-              <>
+              <> */}
                 <Route path='/home' element={<Home></Home>}></Route>
+                <Route path='/profile' element={<Profile></Profile>}></Route>
 
                 <Route path='/asignatura' element={<AsignaturaIndex></AsignaturaIndex>}></Route>
                 <Route path='/asignatura/create' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>
@@ -88,11 +90,11 @@ function App() {
                 <Route path='/tipo_semana' element={<TipoSemanaIndex></TipoSemanaIndex>}></Route>
                 <Route path='/tipo_semana/create' element={<TipoSemanaFormPage></TipoSemanaFormPage>}></Route>
                 <Route path='/tipo_semana/:id' element={<TipoSemanaFormPage></TipoSemanaFormPage>}></Route>
-              </>
+              {/* </>
             ) : (
-                <Route path='/*' element={<SinAcceso></SinAcceso>}></Route>
+              <Route path='/*' element={<SinAcceso></SinAcceso>}></Route>
             )
-          }
+          } */}
         </Routes>
       
       </BrowserRouter>

@@ -56,6 +56,10 @@ const tipoSemanaApi = axios.create({
     baseURL: 'http://localhost:8000/api/v1/tipo_semana'
 })
 
+const userApi = axios.create({
+    baseURL: 'http://localhost:8000/api/user'
+})
+
 /* Planificacion endpoints */
 export const getAllPlanificaciones = () => planificacionApi.get('/')
 export const createPlanificacion = (planificacion) => planificacionApi.post('/', planificacion)
@@ -133,3 +137,6 @@ export const getAllProfesoresHasAsignaturas = () => profesorHasAsignaturaApi.get
 
 /* Estudiante endpoints */
 export const getAllEstudiantes = () => estudianteApi.get('/')
+
+/* User endpoints */
+export const getUser = (user) => userApi.get(`/${user}`)

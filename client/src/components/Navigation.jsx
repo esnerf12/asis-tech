@@ -33,9 +33,9 @@ export function Navigation({ currentUser, setCurrentUser }) {
                         <img className="w-48 h-16 rounded-3xl" src={Logo} alt="Asistech logo design by AsistechTeam" />
                     </Link>
                     { currentUser && (
-                        <div className="flex justify-end items-center">
+                        <Link to={"/profile"} className="flex justify-end items-center">
                             <img className="w-10 rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="icon" />
-                        </div>
+                        </Link>
                     )}
                 </div>
                 <div className="grid grid-cols-2 bg-slate-100 rounded-3xl shadow-xl px-5 py-3">

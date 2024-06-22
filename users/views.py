@@ -1,10 +1,13 @@
 from django.contrib.auth import get_user_model, login, logout
 from rest_framework.authentication import SessionAuthentication
-from rest_framework import permissions, status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import permissions, status, generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializer import UserRegisterSerializer, UserLoginSerializer, UserSerializer
+from .serializer import UserRegisterSerializer, UserLoginSerializer, UserSerializer, ChangePasswordSerializer
 from .validations import custom_validation, validate_email, validate_password
+
+UserModel = get_user_model()
 
 # Create your views here.
 class UserRegister(APIView):
@@ -46,3 +49,9 @@ class UserView(APIView):
 	def get(self, request):
 		serializer = UserSerializer(request.user)
 		return Response({'user': serializer.data}, status=status.HTTP_200_OK)
+
+class ChangePasswordView(generics.UpdateAPIView):
+
+    queryset = UserModel.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ChangePasswordSerializer

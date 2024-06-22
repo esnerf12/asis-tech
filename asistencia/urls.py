@@ -26,6 +26,7 @@ urlpatterns = [
 	path('login', usersviews.UserLogin.as_view(), name='login'),
 	path('logout', usersviews.UserLogout.as_view(), name='logout'),
 	path('user', usersviews.UserView.as_view(), name='user'),
+	path('change_password/<int:pk>/', usersviews.ChangePasswordView.as_view(), name='change_password'),
     path('v1/', include(router.urls)),
     path('docs/', include_docs_urls(title="Asistencia API")),
 ]
