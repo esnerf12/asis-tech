@@ -28,6 +28,7 @@ export function Login({ setCurrentUser }) {
             password: password
           }
         ).then(function(res) {
+          localStorage.setItem("accessToken", res.data.token)
           setCurrentUser(true);
           navigate('/home')
         });

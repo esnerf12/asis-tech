@@ -51,7 +51,7 @@ function App() {
             currentUser ? (
               <> */}
                 <Route path='/home' element={<Home></Home>}></Route>
-                <Route path='/profile' element={<Profile></Profile>}></Route>
+                <Route path='/profile' element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser}></Profile>}></Route>
 
                 <Route path='/asignatura' element={<AsignaturaIndex></AsignaturaIndex>}></Route>
                 <Route path='/asignatura/create' element={<AsignaturaFormPage></AsignaturaFormPage>}></Route>

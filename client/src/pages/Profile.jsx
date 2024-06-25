@@ -1,11 +1,23 @@
-import { useEffect } from "react"
-import { createTipoSemana, updateTipoSemana, getUser } from "../api/asistencia.api"
+import { useEffect, useState } from "react"
+import { createTipoSemana, updateTipoSemana } from "../api/asistencia.api"
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
+import axios from 'axios'
 
-export function Profile() {
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+axios.defaults.withCredentials = true
+
+const client = axios.create({
+  baseURL: "http://127.0.0.1:8000"
+})
+
+export function Profile({ currentUser, setCurrentUser }) {
     
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const [ profile, setProfile ] = useState()
+
+    const token = localStorage.getItem("accessToken")
 
     const navigate = useNavigate()
     const params = useParams()
@@ -27,6 +39,25 @@ export function Profile() {
         }
         navigate('/profile')
     })
+
+    const getUserInfo = async () => {
+        let response = await client.get('/api/user', {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization':'Token ' + token
+            }
+        })
+        setProfile(response.data)
+    }
+
+    useEffect(() => {
+        if (currentUser) {
+            getUserInfo()
+        }
+    }, [])
+
+    console.log(profile)
     
     return (
         <>

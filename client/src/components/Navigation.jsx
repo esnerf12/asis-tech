@@ -17,14 +17,15 @@ export function Navigation({ currentUser, setCurrentUser }) {
     function submitLogout(e) {
         e.preventDefault();
         client.post(
-          "/api/logout",
-          {withCredentials: true}
+            "/api/logout",
+            {withCredentials: true}
         ).then(function(res) {
-          setCurrentUser(false);
-          navigate('/login')
+            localStorage.removeItem("accessToken");
+            setCurrentUser(false);
+            navigate('/login')
         });
     }
-    
+
     return (
         <>
             <nav className="grid grid-flow-col font-mono gap-8 m-5">
