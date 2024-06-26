@@ -11,9 +11,9 @@ const client = axios.create({
 })
 
 export function Navigation({ currentUser, setCurrentUser }) {
-    
+
     const navigate = useNavigate()
-    
+
     function submitLogout(e) {
         e.preventDefault();
         client.post(

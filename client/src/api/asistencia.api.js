@@ -56,8 +56,8 @@ const tipoSemanaApi = axios.create({
     baseURL: 'http://localhost:8000/api/v1/tipo_semana'
 })
 
-const userApi = axios.create({
-    baseURL: 'http://localhost:8000/api/user'
+const userPasswordApi = axios.create({
+    baseURL: 'http://localhost:8000/api/change_password'
 })
 
 /* Planificacion endpoints */
@@ -139,4 +139,4 @@ export const getAllProfesoresHasAsignaturas = () => profesorHasAsignaturaApi.get
 export const getAllEstudiantes = () => estudianteApi.get('/')
 
 /* User endpoints */
-export const getUser = (user) => userApi.get(`/${user}`)
+export const updateUserPassword = (id, userPassword, token) => userPasswordApi.put(`/${id}/`, userPassword, { headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + token } })

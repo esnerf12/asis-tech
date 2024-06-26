@@ -27,7 +27,8 @@ import { Profile } from './pages/Profile'
 import { Unexca } from './pages/Unexca'
 import { Acercade } from './pages/Acercade'
 import { SinAcceso } from './pages/SinAcceso'
-import { useState } from 'react'
+import { useState } from "react"
+import axios from 'axios'
 import './App.css'
 
 function App() {

@@ -53,6 +53,7 @@ class UserView(APIView):
 		return Response({'user': serializer.data}, status=status.HTTP_200_OK)
 
 class ChangePasswordView(generics.UpdateAPIView):
-    queryset = UserModel.objects.all()
-    permission_classes = (IsAuthenticated,)
-    serializer_class = ChangePasswordSerializer
+	permission_classes = (IsAuthenticated, )
+	authentication_classes = (TokenAuthentication, )
+	serializer_class = ChangePasswordSerializer
+	queryset = UserModel.objects.all()
