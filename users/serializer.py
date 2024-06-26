@@ -9,16 +9,15 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         model = UserModel
         fields = '__all__'
     def create(self, clean_data):
-        user_obj = UserModel.objects.create_user(email=clean_data['email'], password=clean_data['password'])
+        user_obj = UserModel.objects.create_user(email=clean_data['email'], pin=clean_data['pin'], password=clean_data['password'])
         user_obj.username = clean_data['username']
-        user_obj.pin = clean_data['pin']
         user_obj.save()
         return user_obj
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = ('user_id', 'email', 'username')
+        fields = ('user_id', 'email', 'username', 'pin')
 
 class ChangePasswordSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[password_validation.validate_password])

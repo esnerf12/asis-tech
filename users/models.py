@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 #User
 
 class AppUserManager(BaseUserManager):
-	def create_user(self, email, pin=None, password=None):
+	def create_user(self, email, pin, password=None):
 		if not email:
 			raise ValueError('An email is required.')
 		if not password:
@@ -15,8 +15,7 @@ class AppUserManager(BaseUserManager):
 		if not pin:
 			raise ValueError('A pin is required.')
 		email = self.normalize_email(email)
-		user = self.model(email=email)
-		user = self.model(pin=pin)
+		user = self.model(email=email, pin=pin)
 		user.set_password(password)
 		user.save()
 		return user
@@ -41,4 +40,4 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 	REQUIRED_FIELDS = ['username', 'pin']
 	objects = AppUserManager()
 	def __str__(self):
-		return self.username
+		return self.pin

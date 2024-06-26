@@ -19,7 +19,7 @@ class UserRegister(APIView):
         if serializer.is_valid(raise_exception=True):
             user = serializer.create(request.data)
             token = Token.objects.create(user=user)
-            return Response({'token': token.key, "user": serializer.data}, status=status.HTTP_201_CREATED)
+            return Response({"token": token.key, "user": serializer.data}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserLogin(APIView):
@@ -31,6 +31,9 @@ class UserLogin(APIView):
 
 		if not user.check_password(request.data['password']):
 			return Response({"error": "Incorrect password"}, status=status.HTTP_400_BAD_REQUEST)
+
+		if not str(user) == request.data['pin']:
+			return Response({"error": "Incorrect PIN"}, status=status.HTTP_400_BAD_REQUEST)
 
 		token, created = Token.objects.get_or_create(user=user)
 		serializer = UserSerializer(instance=user)
