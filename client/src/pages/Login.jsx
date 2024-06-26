@@ -17,23 +17,28 @@ export function Login({ setCurrentUser }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [pin, setPin] = useState('');
+
+    const [ error, setError ] = useState('')
     
     const navigate = useNavigate()
     
     function submitLogin(e) {
-        e.preventDefault();
-        client.post(
-          "/api/login",
-          {
-            email: email,
-            password: password,
-            pin: pin
-          }
-        ).then(function(res) {
-          localStorage.setItem("accessToken", res.data.token)
-          setCurrentUser(true);
-          navigate('/home')
-        });
+      e.preventDefault();
+      client.post(
+        "/api/login",
+        {
+          email: email,
+          password: password,
+          pin: pin
+        }
+      ).then(function(res) {
+        localStorage.setItem("accessToken", res.data.token)
+        setCurrentUser(true);
+        navigate('/home')
+      }).catch(e => {
+        const newError = e.response.data.error
+        setError(newError)
+      });
     }
     
     return (
@@ -41,6 +46,9 @@ export function Login({ setCurrentUser }) {
           <section className="grid grid-cols-2 px-20 my-10">
               <form className="flex flex-col bg-white rounded-l-2xl h-full font-mono px-16 py-20" onSubmit={e => submitLogin(e)}>
                   <h1 className="select-none text-4xl py-6">Ingreso</h1>
+                  <div className="flex justify-center items-center bg-orange-300">
+                    { error && <span>{error}</span> }
+                  </div>
                   <div className="flex flex-col">
                       <label className="select-none py-2" htmlFor="email">Correo electrónico</label>
                       <div className="flex items-center bg-blue-400 rounded-l-xl">
@@ -83,7 +91,7 @@ export function Login({ setCurrentUser }) {
               </form>
               <div className="flex bg-white justify-end rounded-r-2xl">
                 <img className="z-10 h-[560px] w-full rounded-r-2xl" src={Character3DRemoveBg} alt="character_3d" />
-                <div className="absolute bg-blue-400 w-[360px] h-[560px] rounded-r-2xl"></div>
+                <div className="absolute bg-blue-400 w-[360px] h-[605px] rounded-r-2xl"></div>
               </div>
           </section>
         </>
