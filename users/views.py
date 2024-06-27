@@ -27,18 +27,21 @@ class UserLogin(APIView):
 	authentication_classes = (SessionAuthentication,)
 	##
 	def post(self, request):
-		user = get_object_or_404(UserModel, email=request.data['email'])
+		try:
+			user = UserModel.objects.get(email=request.data['email'])
 
-		if not user.check_password(request.data['password']):
-			return Response({"error": "Incorrect password"}, status=status.HTTP_400_BAD_REQUEST)
+			if not user.check_password(request.data['password']):
+				return Response({"error": "Incorrect password"}, status=status.HTTP_400_BAD_REQUEST)
 
-		if not str(user) == request.data['pin']:
-			return Response({"error": "Incorrect PIN"}, status=status.HTTP_400_BAD_REQUEST)
+			if not str(user) == request.data['pin']:
+				return Response({"error": "Incorrect PIN"}, status=status.HTTP_400_BAD_REQUEST)
 
-		token, created = Token.objects.get_or_create(user=user)
-		serializer = UserSerializer(instance=user)
-		login(request, user)
-		return Response({"token": token.key, "user": serializer.data}, status=status.HTTP_200_OK)
+			token, created = Token.objects.get_or_create(user=user)
+			serializer = UserSerializer(instance=user)
+			login(request, user)
+			return Response({"token": token.key, "user": serializer.data}, status=status.HTTP_200_OK)
+		except UserModel.DoesNotExist:
+			return Response({"error": "Email not found"}, status=status.HTTP_404_NOT_FOUND)
 
 class UserLogout(APIView):
 	permission_classes = (permissions.AllowAny,)
