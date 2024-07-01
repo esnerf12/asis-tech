@@ -6,7 +6,7 @@ from rest_framework import permissions, status, generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from .serializer import UserRegisterSerializer, UserSerializer, ChangePasswordSerializer
+from .serializer import UserRegisterSerializer, UserSerializer, ChangePasswordSerializer, ChangePinSerializer
 from .validations import custom_validation, validate_email, validate_password
 
 UserModel = get_user_model()
@@ -62,4 +62,10 @@ class ChangePasswordView(generics.UpdateAPIView):
 	permission_classes = (IsAuthenticated, )
 	authentication_classes = (TokenAuthentication, )
 	serializer_class = ChangePasswordSerializer
+	queryset = UserModel.objects.all()
+
+class ChangePinView(generics.UpdateAPIView):
+	permission_classes = (IsAuthenticated, )
+	authentication_classes = (TokenAuthentication, )
+	serializer_class = ChangePinSerializer
 	queryset = UserModel.objects.all()

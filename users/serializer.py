@@ -46,3 +46,31 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+    
+class ChangePinSerializer(serializers.ModelSerializer):
+    pin = serializers.CharField(write_only=True, required=True)
+    pin2 = serializers.CharField(write_only=True, required=True)
+    old_pin = serializers.CharField(write_only=True, required=True)
+
+    class Meta:
+        model = UserModel
+        fields = ('old_pin', 'pin', 'pin2')
+
+    def validate(self, attrs):
+        if attrs['pin'] != attrs['pin2']:
+            raise serializers.ValidationError({"pin": "Pin fields didn't match."})
+
+        return attrs
+
+    def validate_old_pin(self, value):
+        user = self.context['request'].user
+        if not str(user) == str(value):
+            raise serializers.ValidationError("Old pin is not correct")
+        return value
+
+    def update(self, instance, validated_data):
+
+        instance.pin = validated_data['pin']
+        instance.save()
+
+        return instance
