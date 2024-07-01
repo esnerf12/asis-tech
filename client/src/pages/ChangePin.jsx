@@ -1,19 +1,28 @@
-import { createTipoSemana, updateTipoSemana } from "../api/asistencia.api"
+import { useState } from "react"
+import { updateUserPin } from "../api/asistencia.api"
 import { useForm } from "react-hook-form"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-export function ChangePin() {
+export function ChangePin({ currentUserId, token }) {
     
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const [ error, setError ] = useState()
+    const [ success, setSuccess ] = useState()
 
     const navigate = useNavigate()
-    const params = useParams()
 
     const onSubmit = handleSubmit(async data => {
-        if (params.id) {
-            await updateTipoSemana(params.id, data)
-        } else {
-            await createTipoSemana(data)
+        if (currentUserId) {
+            try {
+                await updateUserPin(currentUserId, data, token)
+                setSuccess('El PIN se ha actualizado con exito.')
+                setError(false)
+            } catch(e) {
+                const error = e.response.data
+                const newError = error.pin ? error.pin[0] : error.old_pin.old_pin
+                setError(newError)
+                setSuccess(false)
+            }
         }
         navigate('/profile')
     })
@@ -23,6 +32,12 @@ export function ChangePin() {
             <div className="flex flex-col gap-4 px-8 py-6">
                 <h2 className="text-xl">Cambio de PIN de seguridad</h2>
                 <form className="flex flex-col gap-1" onSubmit={onSubmit}>
+                    <div className="flex justify-center items-center bg-orange-300">
+                        { error && <span>{error}</span> }
+                    </div>
+                    <div className="flex justify-center items-center bg-green-300">
+                        { success && <span>{success}</span> }
+                    </div>
                     <label className="flex justify-start items-center gap-2" htmlFor="old_pin">
                         <span className="text-lg">PIN anterior</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-info-circle text-blue-900 cursor-pointer" viewBox="0 0 16 16">

@@ -10,9 +10,13 @@ export function ChangePassword({ currentUserId, token }) {
 
     const onSubmit = handleSubmit(async data => {
         if (currentUserId) {
-            await updateUserPassword(currentUserId, data, token)
+            try {
+                await updateUserPassword(currentUserId, data, token)
+            } catch(e) {
+                const error = e.response.data
+            }
         }
-        navigate('/home')
+        navigate('/profile')
     })
     
     return (

@@ -60,6 +60,10 @@ const userPasswordApi = axios.create({
     baseURL: 'http://localhost:8000/api/change_password'
 })
 
+const userPinApi = axios.create({
+    baseURL: 'http://localhost:8000/api/change_pin'
+})
+
 /* Planificacion endpoints */
 export const getAllPlanificaciones = () => planificacionApi.get('/')
 export const createPlanificacion = (planificacion) => planificacionApi.post('/', planificacion)
@@ -138,5 +142,8 @@ export const getAllProfesoresHasAsignaturas = () => profesorHasAsignaturaApi.get
 /* Estudiante endpoints */
 export const getAllEstudiantes = () => estudianteApi.get('/')
 
-/* User endpoints */
+/* User password endpoints */
 export const updateUserPassword = (id, userPassword, token) => userPasswordApi.put(`/${id}/`, userPassword, { headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + token } })
+
+/* User pin endpoints */
+export const updateUserPin = (id, userPin, token) => userPinApi.put(`/${id}/`, userPin, { headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + token } })

@@ -61,7 +61,7 @@ export function Profile({ currentUser, setCurrentUser }) {
                 </div>
                 <ChangePassword currentUserId={profile && profile.user.user_id} token={token}></ChangePassword>
                 <div></div>
-                <ChangePin></ChangePin>
+                <ChangePin currentUserId={profile && profile.user.user_id} token={token}></ChangePin>
             </section>
         </>
     )

@@ -65,7 +65,7 @@ class ChangePinSerializer(serializers.ModelSerializer):
     def validate_old_pin(self, value):
         user = self.context['request'].user
         if not str(user) == str(value):
-            raise serializers.ValidationError("Old pin is not correct")
+            raise serializers.ValidationError({"old_pin": "Old pin is not correct."})
         return value
 
     def update(self, instance, validated_data):
