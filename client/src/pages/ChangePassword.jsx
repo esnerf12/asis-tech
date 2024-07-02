@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { updateUserPassword } from "../api/asistencia.api"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
@@ -5,6 +6,8 @@ import { useNavigate } from "react-router-dom"
 export function ChangePassword({ currentUserId, token }) {
     
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const [ error, setError ] = useState()
+    const [ success, setSuccess ] = useState()
 
     const navigate = useNavigate()
 
@@ -12,8 +15,13 @@ export function ChangePassword({ currentUserId, token }) {
         if (currentUserId) {
             try {
                 await updateUserPassword(currentUserId, data, token)
+                setSuccess('Se ha actualizado la contraseña con exito.')
+                setError(false)
             } catch(e) {
                 const error = e.response.data
+                const newError = error.password ? error.password : error.old_password.old_password
+                setError(newError)
+                setSuccess(false)
             }
         }
         navigate('/profile')
@@ -24,6 +32,14 @@ export function ChangePassword({ currentUserId, token }) {
             <div className="flex flex-col gap-4 px-8 py-6">
                 <h2 className="text-xl">Cambio de contraseña</h2>
                 <form className="flex flex-col gap-1" onSubmit={onSubmit}>
+                    <div className="flex justify-center items-center bg-orange-300">
+                        { error && Array.isArray(error) ? (error.map(e => {
+                            return <p key={e}>{e}</p>
+                        })) : (<span>{error}</span>) }
+                    </div>
+                    <div className="flex justify-center items-center bg-green-300">
+                        { success && <span>{success}</span> }
+                    </div>
                     <label className="flex justify-start items-center gap-2" htmlFor="old_password">
                         <span className="text-lg">Contraseña anterior</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-info-circle text-blue-900 cursor-pointer" viewBox="0 0 16 16">
