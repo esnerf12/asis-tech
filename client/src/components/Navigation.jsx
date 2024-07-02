@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../assets/asistech-logo.png'
 import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
@@ -12,6 +13,26 @@ const client = axios.create({
 
 export function Navigation({ currentUser, setCurrentUser }) {
 
+    const [ colorOptions, setColorOptions ] = useState("bg-blue-400")
+    
+    const colors = [
+        {
+            "id": 1,
+            "nombre": "azul",
+            "color": "bg-blue-400",
+        },
+        {
+            "id": 2,
+            "nombre": "naranja",
+            "color": "bg-orange-400",
+        },
+        {
+            "id": 3,
+            "nombre": "rojo",
+            "color": "bg-red-400",
+        },
+    ]
+    
     const navigate = useNavigate()
 
     function submitLogout(e) {
@@ -26,18 +47,32 @@ export function Navigation({ currentUser, setCurrentUser }) {
         });
     }
 
+    function handleColorOptions(e) {
+        const newColor = e.target.value
+        setColorOptions(newColor)
+    }
+
     return (
         <>
             <nav className="grid grid-flow-col font-mono gap-8 m-5">
-                <div className="grid grid-cols-2 bg-blue-400 rounded-3xl shadow-xl px-10 py-3">
+                <div className={'grid grid-cols-2 bg-blue-400 rounded-3xl shadow-xl px-10 py-3'}>
                     <Link to="/">
                         <img className="w-48 h-16 rounded-3xl" src={Logo} alt="Asistech logo design by AsistechTeam" />
                     </Link>
-                    { currentUser && (
-                        <Link to={"/profile"} className="flex justify-end items-center">
-                            <img className="w-10 rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="icon" />
-                        </Link>
-                    )}
+                    <div className='flex justify-end items-center gap-10'>
+                        <select onChange={handleColorOptions} className='border-2 border-black rounded-full w-10 h-10' name="color_selector" id="color_selector">
+                            {
+                                colors && colors.map(e => {
+                                    return <option className={e.color} key={e.id} value={e.color}>{e.nombre}</option>
+                                })
+                            }
+                        </select>
+                        { currentUser && (
+                            <Link to={"/profile"} className="flex justify-end items-center">
+                                <img className="w-10 rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="icon" />
+                            </Link>
+                        )}
+                    </div>
                 </div>
                 <div className="grid grid-cols-2 bg-slate-100 rounded-3xl shadow-xl px-5 py-3">
                     <div className="flex justify-center items-center gap-8">
