@@ -46,7 +46,7 @@ export function ChangePin({ currentUserId, token }) {
                         </svg>
                         { errors.old_pin && <li className="text-red-600">El pin anterior es requerido.</li> }
                     </label>
-                    <input className="border-2 border-black rounded-md p-2" type="password" {...register('old_pin', {required: true})} />
+                    <input className="border-2 border-black rounded-md p-2" minLength="6" maxLength="6" type="password" {...register('old_pin', {required: true})} />
 
                     <label className="flex justify-start items-center gap-2" htmlFor="pin">
                         <span className="text-lg">PIN nuevo</span>
@@ -56,7 +56,7 @@ export function ChangePin({ currentUserId, token }) {
                         </svg>
                         { errors.pin && <li className="text-red-600">El pin nuevo es requerido.</li> }
                     </label>
-                    <input className="border-2 border-black rounded-md p-2" type="password" {...register('pin', {required: true})} />
+                    <input className="border-2 border-black rounded-md p-2" minLength="6" maxLength="6" type="password" {...register('pin', {required: true})} />
 
                     <label className="flex justify-start items-center gap-2" htmlFor="pin2">
                         <span className="text-lg">Repite el pin nuevo</span>
@@ -66,7 +66,7 @@ export function ChangePin({ currentUserId, token }) {
                         </svg>
                         { errors.pin2 && <li className="text-red-600">Repetir el pin nuevo es requerido.</li> }
                     </label>
-                    <input className="border-2 border-black rounded-md p-2" type="password" {...register('pin2', {required: true})} />
+                    <input className="border-2 border-black rounded-md p-2" minLength="6" maxLength="6" type="password" {...register('pin2', {required: true})} />
 
                     <button type="submit" className="border-2 border-blue-900 bg-white text-blue-900 px-4 py-2 rounded-lg mt-6">Enviar</button>
                 </form>
