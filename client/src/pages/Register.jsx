@@ -92,7 +92,7 @@ export function Register({ setCurrentUser }) {
                 <div className="flex flex-col">
                   <label className="select-none py-2" htmlFor="pin">PIN</label>
                   <div className="flex items-center bg-blue-400 rounded-r-xl">
-                    <input className="w-full border-2 border-black p-2" type="password" placeholder="Ingresa el PIN de seguridad" value={pin} onChange={e => setPin(e.target.value)} required />
+                    <input className="w-full border-2 border-black p-2" minLength="6" maxLength="6" type="password" placeholder="Ingresa el PIN de seguridad" value={pin} onChange={e => setPin(e.target.value)} required />
                     <div className="px-4">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-asterisk" viewBox="0 0 16 16">
                         <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/>
