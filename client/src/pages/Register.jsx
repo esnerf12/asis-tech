@@ -19,32 +19,39 @@ export function Register({ setCurrentUser }) {
     const [password, setPassword] = useState('');
     const [pin, setPin] = useState('');
 
+    const [ emailError, setEmailError ] = useState()
+    const [ usernameError, setUsernameError ] = useState()
+
     const navigate = useNavigate()
 
     function submitRegistration(e) {
-        e.preventDefault();
+      e.preventDefault();
+      client.post(
+        "/api/register",
+        {
+          email: email,
+          username: username,
+          password: password,
+          pin: pin
+        }
+      ).then(function(res) {
         client.post(
-          "/api/register",
+          "/api/login",
           {
             email: email,
-            username: username,
             password: password,
             pin: pin
           }
         ).then(function(res) {
-          client.post(
-            "/api/login",
-            {
-              email: email,
-              password: password,
-              pin: pin
-            }
-          ).then(function(res) {
-            localStorage.setItem("accessToken", res.data.token)
-            setCurrentUser(true);
-            navigate('/home')
-          });
+          localStorage.setItem("accessToken", res.data.token)
+          setCurrentUser(true);
+          navigate('/home')
         });
+      }).catch(e => {
+        const { email, username } = e.response.data
+        setEmailError(email[0])
+        setUsernameError(username[0])
+      });
     }
     
     return (
@@ -56,6 +63,12 @@ export function Register({ setCurrentUser }) {
             </div>
             <form className="flex flex-col bg-white rounded-r-2xl h-full font-mono px-16 py-16" onSubmit={e => submitRegistration(e)}>
                 <h1 className="select-none text-4xl py-4 text-end">Registro</h1>
+                <div className="flex justify-center items-center bg-orange-300">
+                  { emailError && <span>{emailError}</span> }
+                </div>
+                <div className="flex justify-center items-center bg-orange-300">
+                  { usernameError && <span>{usernameError}</span> }
+                </div>
                 <div className="flex flex-col">
                   <label className="select-none py-2" htmlFor="email">Correo electrónico</label>
                   <div className="flex items-center bg-blue-400 rounded-r-xl">
@@ -81,7 +94,7 @@ export function Register({ setCurrentUser }) {
                 <div className="flex flex-col">
                   <label className="select-none py-2" htmlFor="password">Contraseña</label>
                   <div className="flex items-center bg-blue-400 rounded-r-xl">
-                    <input className="w-full border-2 border-black p-2" type="password" placeholder="Ingresa la contraseña" value={password} onChange={e => setPassword(e.target.value)} required />
+                    <input className="w-full border-2 border-black p-2" minLength="8" maxLength="20" type="password" placeholder="Ingresa la contraseña" value={password} onChange={e => setPassword(e.target.value)} required />
                     <div className="px-4">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-asterisk" viewBox="0 0 16 16">
                         <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/>

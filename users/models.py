@@ -19,7 +19,7 @@ class AppUserManager(BaseUserManager):
 		user.set_password(password)
 		user.save()
 		return user
-	def create_superuser(self, email, pin=None, password=None):
+	def create_superuser(self, email, pin, password=None):
 		if not email:
 			raise ValueError('An email is required.')
 		if not password:
