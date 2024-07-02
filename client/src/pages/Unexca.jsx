@@ -30,8 +30,8 @@ export function Unexca() {
                 </div>
             </div>
 
-            <div className="acercade-content relative md:flex mt-10">
-                <div className="md:container justify-center overflow-hidden px-9">
+            <div className="acercade-content relative md:flex mt-12">
+                <div className="md:container justify-center overflow-hidden md:m-8 px-6">
                     <h1 className="text-2xl border-b-4 border-orange-600 py-2 hover:animate-pulse">Localización.</h1>
                     <p className="text-justify py-2"> La UNEXCA sede Altagracia se encuentra ubicada en la misma dirección del antes llamado Colegio Universitario Francisco de Miranda, su dirección específica, Esquina Mijares, Avenida Oeste 3, Altagracia, Caracas 1010, 1010, Distrito Capital. </p>
                     <div className="md:container relative">
